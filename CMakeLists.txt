@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 2.8.9)
 project(dkl-cmd
-        #[[VERSION 0.1.0]]
+        #[[VERSION 0.1.1]]
         LANGUAGES C
         )
 
