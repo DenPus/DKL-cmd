@@ -12,14 +12,14 @@
 #include <stdio.h>
 #include <stdarg.h>
 
-int vfprintlnf(FILE *__restrict stream, const char *__restrict format,
+extern int vfprintlnf(FILE *__restrict stream, const char *__restrict format,
                va_list arg);
 
-int sprintlnf(char *__restrict dst, const char *__restrict format, ...);
+extern int sprintlnf(char *__restrict dst, const char *__restrict format, ...);
 
-int
+extern int
 vsprintlnf(char *__restrict dst, const char *__restrict format, va_list arg);
 
-int fprintlnf(FILE *__restrict stream, const char *__restrict format, ...);
+extern int fprintlnf(FILE *__restrict stream, const char *__restrict format, ...);
 
-int printlnf(const char *__restrict format, ...);
+extern int printlnf(const char *__restrict format, ...);
