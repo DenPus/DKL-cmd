@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.9)
-project(dkl-cmd LANGUAGES C)
+project(@name LANGUAGES @language)
 
 set(CMAKE_C_STANDARD 11)
 
@@ -7,18 +7,18 @@ file(GLOB src_ls "src/*.c" "src/**/*.c")
 file(GLOB header_ls "header/*.h")
 file(GLOB include_ls "include/*.h")
 
-add_library(dkl-cmd ${include_ls} ${src_ls})
+add_library(@name ${include_ls} ${src_ls})
 
 include_directories(header include)
-link_libraries(dkl-cmd)
+link_libraries(@name)
 
 set_target_properties(
-        dkl-cmd PROPERTIES
+        @name PROPERTIES
         PUBLIC_HEADER "${include_ls}"
         PRIVATE_HEADER "${header_ls}"
 )
 
-install(TARGETS dkl-cmd
+install(TARGETS @name
         PUBLIC_HEADER DESTINATION include
         PRIVATE_HEADER DESTINATION include/dkl
         LIBRARY DESTINATION lib

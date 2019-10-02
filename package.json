@@ -1,0 +1,16 @@
+{
+  "language": "C",
+  "title": "DKL-cmd",
+  "name": "dkl-cmd",
+  "version": "0.1.2.0",
+  "license": "GPL-2.0",
+  "description": "Library - functions for console",
+  "homepage": "https://github.com/Denpus/DKL-cmd/#README.md",
+  "keywords": [
+    "C",
+    "console",
+    "println"
+  ],
+  "dependencies": {
+  }
+}

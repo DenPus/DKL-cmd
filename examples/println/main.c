@@ -16,7 +16,7 @@ int main(void) {
 
     sprintlnf(buf, "Line %d end", 5);
 
-    printf(buf);
+    printf("%s", buf);
 
     return 0;
 }

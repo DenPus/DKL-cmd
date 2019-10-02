@@ -1,13 +1,19 @@
 /*
- * 
- * Author:   denkar
- * Created:  02.09.19 14:58
+ * println.c
  *
- * Println - support functions: printlnf, fprintlnf, vfprintlnf, sprintlnf
- * and vsprintlnf
+ * Println
+ * =======
+ * Print standard function with line (add to last fmt "\n")
+ * Support functions: printlnf, fprintlnf, vfprintlnf, sprintlnf and vsprintlnf
+ *
+ * Author   :  denkar
+ * Created  :  02.09.19 14:58
  */
 
-#include "main.h"
+#include <string.h>
+#include <stdarg.h>
+#include <stdio.h>
+#include "println.h"
 
 static int
 _vprintlnf(char *dst, FILE *stream, const char *format, va_list arg) {
@@ -44,7 +50,6 @@ int sprintlnf(char *dst, const char *format, ...) {
 
     return done;
 }
-
 
 int vsprintlnf(char *dst, const char *format, va_list arg) {
     int done = _vprintlnf(dst, NULL, format, arg);
