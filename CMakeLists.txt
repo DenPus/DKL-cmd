@@ -3,14 +3,29 @@ project(dkl-cmd LANGUAGES C)
 
 set(CMAKE_C_STANDARD 11)
 
-file(GLOB src_ls "src/*.c" "src/**/*.c")
-file(GLOB header_ls "header/*.h")
-file(GLOB include_ls "include/*.h")
+file(GLOB include_ls RELATIVE "${PROJECT_SOURCE_DIR}" "include/*.h")
+file(GLOB header_ls RELATIVE "${PROJECT_SOURCE_DIR}" "headers/*.h")
+file(GLOB src_ls RELATIVE "${PROJECT_SOURCE_DIR}" "src/*.c" "src/**/*.c" "src/**/**/*.c")
 
-add_library(dkl-cmd ${include_ls} ${src_ls})
+list(FILTER include_ls EXCLUDE REGEX "^include\\/\\@")
+list(FILTER header_ls EXCLUDE REGEX "^headers\\/\\@")
+list(FILTER src_ls EXCLUDE REGEX "^src\\/\\@")
 
-include_directories(header include)
-link_libraries(dkl-cmd)
+# Dependencies
+
+if (CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
+    set(exd_examples true)
+    set(exd_tests true)
+endif()
+
+if (CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
+    unset(exd_examples)
+    unset(exd_tests)
+endif()
+
+add_library(dkl-cmd ${header_ls} ${include_ls} ${src_ls})
+
+target_include_directories(dkl-cmd PRIVATE headers)
 
 set_target_properties(
         dkl-cmd PROPERTIES
@@ -20,13 +35,19 @@ set_target_properties(
 
 install(TARGETS dkl-cmd
         PUBLIC_HEADER DESTINATION include
-        PRIVATE_HEADER DESTINATION include/dkl
+        PRIVATE_HEADER DESTINATION include/dkl-cmd
         LIBRARY DESTINATION lib
         ARCHIVE DESTINATION lib
         )
 
-add_subdirectory(examples)
+if (EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/share")
+    install(DIRECTORY share/ DESTINATION share/dkl-json)
+endif ()
 
-include_directories(lib/dtest)
+if (NOT exd_examples)
+    add_subdirectory(examples)
+endif ()
 
-add_subdirectory(tests)
+if (NOT exd_tests)
+    add_subdirectory(tests)
+endif ()

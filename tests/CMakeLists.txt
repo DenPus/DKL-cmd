@@ -1,10 +1,30 @@
 file(GLOB C_FILES RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CURRENT_SOURCE_DIR}/*.c)
-add_custom_target(${PROJECT_NAME}-tests)
-include_directories(../lib/dtest)
+add_custom_target(dkl-cmd-tests)
+
+# Dependencies
+
+# -- dtest
+
+if (NOT TARGET dtest AND EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/lib/dtest/CMakeLists.txt")
+    add_subdirectory(lib/dtest)
+endif()
+
+if (TARGET dtest)
+    link_libraries(dtest)
+endif()
+
+include_directories(
+    ../lib/dtest/include/dtest
+    ../lib/dtest/include
+    ../lib/dtest
+    )
+
+include_directories(../headers)
 
 foreach (module ${C_FILES})
-   get_filename_component(name ${module} NAME_WE)
-   set(libname ${PROJECT_NAME}-ts-${name})
-   add_library(${libname} SHARED ${module})
-   add_dependencies(${PROJECT_NAME}-tests ${libname})
+    get_filename_component(name ${module} NAME_WE)
+    set(libname dkl-cmd-ts-${name})
+    add_library(${libname} SHARED ${module})
+    target_link_libraries(${libname} PRIVATE dkl-cmd)
+    add_dependencies(dkl-cmd-tests ${libname})
 endforeach ()

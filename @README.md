@@ -8,10 +8,18 @@
 
 # Functions
 
+```
+git clone git\@github.com:Denpus/@name\.git
+cd @name
+mkdir build && cd build
+cmake ..
+```
+
 # Info
 
-* Homepage: [@homepage]
-* Keywords: @keywords
+* Homepage: [@homepage](@homepage)
 * Language code: @language
-* Author: DenKar
-* License: @license
+* License: [@license](https://www.gnu.org/licenses/gpl-2.0.html)
+* Author: Denis Karabadjak <denkar\@mail.ru>
+
+Copyright (C) 2019 Denis Karabadjak
