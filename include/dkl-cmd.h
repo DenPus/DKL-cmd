@@ -23,3 +23,5 @@ vsprintlnf(char *__restrict dst, const char *__restrict format, va_list arg);
 extern int fprintlnf(FILE *__restrict stream, const char *__restrict format, ...);
 
 extern int printlnf(const char *__restrict format, ...);
+
+extern int reverse(size_t nsrc, char *src);
