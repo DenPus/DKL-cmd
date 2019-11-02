@@ -3,7 +3,7 @@
   "title": "DKL-cmd",
   "name": "dkl-cmd",
   "prefix": "cmd",
-  "version": "0.1.4.0",
+  "version": "0.1.5.0",
   "license": "GPL-2.0",
   "description": "Library - functions for console",
   "homepage": "https://github.com/Denpus/DKL-cmd",
