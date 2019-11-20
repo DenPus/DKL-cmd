@@ -13,13 +13,18 @@
 #include <dkl-cmd.h>
 
 int main(void) {
-    int err = 0;
+    int  err = 0;
     char src[11];
-    int len = itoa(src, 789760);
+    int  len = itoa(src, 789760);
 
-    src[len] = '\0';
+    src[len]       = '\0';
 
-    printf("%s", src);
+    char long_src[21];
+    int  long_nsrc = aofi(long_src, 18, 10);
+
+    long_src[long_nsrc] = '\0';
+
+    printf("%.*s --- %.*s", len, src, long_nsrc, long_src);
 
     return err;
 }

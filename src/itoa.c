@@ -13,25 +13,52 @@
 #include "itoa.h"
 #include "reverse.h"
 
-int itoa(char *dst, int src) {
-    int   len;
-    int   sign        = src;
-    _Bool is_negative = sign < 0;
-
-    if (is_negative) {
-        len = 1;
-        src = -src;
-        dst[0] = '-';
-        dst++;
-    } else {
-        len = 0;
-    }
+int aofui(char *dst, unsigned int src, int radix) {
+    int len = 0;
 
     do {
-        dst[len++] = (char) (src % 10 + '0');
-    } while ((src /= 10) > 0);
+        dst[len++] = (char) (src % radix + '0');
+    } while ((src /= radix) > 0);
 
     reverse((size_t) len, dst);
+
+    return len;
+}
+
+int aofi(char *dst, int src, int radix) {
+    int len;
+
+    if (src < 0 && radix == 10) {
+        *dst++ = '-';
+        len = 1 + aofui(dst, (unsigned int) -src, radix);
+    } else {
+        len = aofui(dst, (unsigned int) src, radix);
+    }
+
+    return len;
+}
+
+int aoful(char *dst, unsigned long src, int radix) {
+    int len = 0;
+
+    do {
+        dst[len++] = (char) (src % radix + '0');
+    } while ((src /= radix) > 0);
+
+    reverse((size_t) len, dst);
+
+    return len;
+}
+
+int aofl(char *dst, long src, int radix) {
+    int len;
+
+    if (src < 0 && radix == 10) {
+        *dst++ = '-';
+        len = 1 + aoful(dst, (unsigned long) -src, radix);
+    } else {
+        len = aoful(dst, (unsigned long) src, radix);
+    }
 
     return len;
 }
