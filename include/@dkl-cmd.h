@@ -16,6 +16,8 @@
 
 #pragma once
 
-@include("../headers/println.h" "#include <")
-@include("../headers/reverse.h" "#include <")
+#define __DLIB__ 1
+
+@include("../headers/println.h" "#ifndef")
+@include("../headers/reverse.h" "extern ")
 @include("../headers/itoa.h" "extern ")

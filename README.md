@@ -1,4 +1,4 @@
-dkl-cmd v0.1.6.0
+dkl-cmd v0.1.7.0
 ====================================
 Library - functions for console
 

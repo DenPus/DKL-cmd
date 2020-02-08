@@ -12,13 +12,13 @@
 
 #include <dkl-cmd.h>
 
-int main(void) {
+int _start(void) {
     int err = 0;
     char src[13] = "Text reverse";
 
     reverse(sizeof(src) - 1, src);
 
-    printf("%s", src);
+    /*printf("%s", src);*/
 
     return err;
 }

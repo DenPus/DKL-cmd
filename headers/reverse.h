@@ -12,6 +12,4 @@
 
 #pragma once
 
-#include <stddef.h>
-
-extern int reverse(size_t nsrc, char *src);
+extern int reverse(unsigned long nsrc, char *src);

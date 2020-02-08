@@ -20,7 +20,7 @@ int aofui(char *dst, unsigned int src, int radix) {
         dst[len++] = (char) (src % radix + '0');
     } while ((src /= radix) > 0);
 
-    reverse((size_t) len, dst);
+    reverse((unsigned long) len, dst);
 
     return len;
 }
@@ -45,7 +45,7 @@ int aoful(char *dst, unsigned long src, int radix) {
         dst[len++] = (char) (src % radix + '0');
     } while ((src /= radix) > 0);
 
-    reverse((size_t) len, dst);
+    reverse((unsigned long) len, dst);
 
     return len;
 }

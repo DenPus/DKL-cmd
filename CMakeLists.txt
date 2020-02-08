@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 2.8.9)
 project(dkl-cmd LANGUAGES C)
 
+set(CMAKE_C_FLAGS "-nostdlib")
 set(CMAKE_C_STANDARD 11)
 
 file(GLOB include_ls RELATIVE "${PROJECT_SOURCE_DIR}" "include/*.h")

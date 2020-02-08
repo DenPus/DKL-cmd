@@ -10,10 +10,11 @@
  * Created  :  02.09.19 14:58
  */
 
+#include "println.h"
+#ifndef __DLIB__
 #include <string.h>
 #include <stdarg.h>
 #include <stdio.h>
-#include "println.h"
 
 static int
 _vprintlnf(char *dst, FILE *stream, const char *format, va_list arg) {
@@ -78,3 +79,4 @@ int printlnf(const char *format, ...) {
 
     return done;
 }
+#endif

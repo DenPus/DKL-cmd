@@ -12,11 +12,11 @@
 
 #include "reverse.h"
 
-int reverse(size_t nsrc, char *src) {
+int reverse(unsigned long nsrc, char *src) {
     int    err = 0;
     char   ch;
-    size_t i   = nsrc - 1;
-    size_t j   = 0;
+    unsigned long i   = nsrc - 1;
+    unsigned long j   = 0;
 
     for (; i > j; i--, j++) {
         ch = src[i];

@@ -12,7 +12,7 @@
 
 #include <dkl-cmd.h>
 
-int main(void) {
+int _start(void) {
     int  err = 0;
     char src[11];
     int  len = itoa(src, 789760);
@@ -24,7 +24,7 @@ int main(void) {
 
     long_src[long_nsrc] = '\0';
 
-    printf("%.*s --- %.*s", len, src, long_nsrc, long_src);
+    /*printf("%.*s --- %.*s", len, src, long_nsrc, long_src);*/
 
     return err;
 }
