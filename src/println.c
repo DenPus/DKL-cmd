@@ -30,53 +30,49 @@ _vprintlnf(char *dst, FILE *stream, const char *format, va_list arg) {
     } else {
         done = vfprintf(stream, fmt, arg);
     }
-
     return done;
 }
 
-int vfprintlnf(FILE *stream, const char *format,
+int vfprintlnf(FILE *stream, const char *fmt,
                va_list arg) {
-    int done = _vprintlnf(NULL, stream, format, arg);
+    int done = _vprintlnf(NULL, stream, fmt, arg);
 
     return done;
 }
 
-int sprintlnf(char *dst, const char *format, ...) {
+int sprintlnf(char *dst, const char *fmt, ...) {
     va_list arg;
     int     done;
 
-    va_start (arg, format);
-    done = _vprintlnf(dst, NULL, format, arg);
+    va_start (arg, fmt);
+    done = _vprintlnf(dst, NULL, fmt, arg);
     va_end (arg);
+    return done;
+}
+
+int vsprintlnf(char *dst, const char *fmt, va_list arg) {
+    int done = _vprintlnf(dst, NULL, fmt, arg);
 
     return done;
 }
 
-int vsprintlnf(char *dst, const char *format, va_list arg) {
-    int done = _vprintlnf(dst, NULL, format, arg);
-
-    return done;
-}
-
-int fprintlnf(FILE *stream, const char *format, ...) {
+int fprintlnf(FILE *stream, const char *fmt, ...) {
     va_list arg;
     int     done;
 
-    va_start (arg, format);
-    done = vfprintlnf(stream, format, arg);
+    va_start (arg, fmt);
+    done = vfprintlnf(stream, fmt, arg);
     va_end (arg);
-
     return done;
 }
 
-int printlnf(const char *format, ...) {
+int printlnf(const char *fmt, ...) {
     va_list arg;
     int     done;
 
-    va_start (arg, format);
-    done = vfprintlnf(stdout, format, arg);
+    va_start (arg, fmt);
+    done = vfprintlnf(stdout, fmt, arg);
     va_end (arg);
-
     return done;
 }
 #endif

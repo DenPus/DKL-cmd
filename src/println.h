@@ -1,8 +1,13 @@
 /*
  * println.h
  *
- * Author:   denkar
- * Created:  02.10.19 9:55
+ * println*()
+ * ==========
+ *
+ * Author   :
+ * Created  :  02.10.19 9:55
+ *
+ * Copyright (C) Denis Karabadjak <denkar@mail.ru>
  */
 
 #pragma once
@@ -15,7 +20,8 @@
 extern int vfprintlnf(FILE *__restrict stream, const char *__restrict format,
                       va_list arg);
 
-extern int sprintlnf(char *__restrict dst, const char *__restrict format, ...);
+extern
+int sprintlnf(char *__restrict dst, const char *__restrict format, ...);
 
 extern int
 vsprintlnf(char *__restrict dst, const char *__restrict format, va_list arg);

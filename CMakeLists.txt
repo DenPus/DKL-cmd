@@ -5,11 +5,11 @@ set(CMAKE_C_FLAGS "-nostdlib")
 set(CMAKE_C_STANDARD 11)
 
 file(GLOB include_ls RELATIVE "${PROJECT_SOURCE_DIR}" "include/*.h")
-file(GLOB header_ls RELATIVE "${PROJECT_SOURCE_DIR}" "headers/*.h")
+file(GLOB header_ls RELATIVE "${PROJECT_SOURCE_DIR}" "src/*.h")
 file(GLOB src_ls RELATIVE "${PROJECT_SOURCE_DIR}" "src/*.c" "src/**/*.c" "src/**/**/*.c")
 
 list(FILTER include_ls EXCLUDE REGEX "^include\\/\\@")
-list(FILTER header_ls EXCLUDE REGEX "^headers\\/\\@")
+list(FILTER header_ls EXCLUDE REGEX "^src\\/\\@")
 list(FILTER src_ls EXCLUDE REGEX "^src\\/\\@")
 
 # Dependencies
@@ -26,7 +26,7 @@ endif()
 
 add_library(dkl-cmd ${header_ls} ${include_ls} ${src_ls})
 
-target_include_directories(dkl-cmd PRIVATE headers)
+target_include_directories(dkl-cmd PRIVATE src)
 
 set_target_properties(
         dkl-cmd PROPERTIES
@@ -42,7 +42,7 @@ install(TARGETS dkl-cmd
         )
 
 if (EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/share")
-    install(DIRECTORY share/ DESTINATION share/dkl-json)
+    install(DIRECTORY share/ DESTINATION share/dkl-cmd)
 endif ()
 
 if (NOT exd_examples)

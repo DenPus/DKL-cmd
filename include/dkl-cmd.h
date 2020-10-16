@@ -9,7 +9,7 @@
  * Created  :   02.09.19 13:06
  * Homepage :   https://github.com/Denpus/DKL-cmd
  * License  :   GPL-2.0
- * Version  :   0.1.7.0
+ * Version  :   0.1.8
  *
  * Copyright (C) Denis Karabadjak <denkar>
  */
@@ -38,7 +38,6 @@ extern int printlnf(const char *__restrict format, ...);
 
 #endif
 
-
 extern int reverse(unsigned long nsrc, char *src);
 
 extern int aofl(char *dst, long src, int radix);
@@ -50,4 +49,3 @@ extern int aofi(char *dst, int src, int radix);
 #define itoa(dst, src) aofi(dst, src, 10)
 
 extern int aofui(char *dst, unsigned int src, int radix);
-

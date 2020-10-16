@@ -13,17 +13,14 @@
 #include "reverse.h"
 
 int reverse(unsigned long nsrc, char *src) {
-    int    err = 0;
-    char   ch;
-    unsigned long i   = nsrc - 1;
-    unsigned long j   = 0;
+    unsigned long i  = nsrc - 1;
+    unsigned long j  = 0;
+    char          ch;
 
     for (; i > j; i--, j++) {
-        ch = src[i];
-
+        ch     = src[i];
         src[i] = src[j];
         src[j] = ch;
     }
-
-    return err;
+    return 0;
 }

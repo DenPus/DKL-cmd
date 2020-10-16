@@ -13,15 +13,15 @@
 #include "itoa.h"
 #include "reverse.h"
 
+static const char * const c_ls = "0123456789ABCDEF";
+
 int aofui(char *dst, unsigned int src, int radix) {
     int len = 0;
 
     do {
-        dst[len++] = (char) (src % radix + '0');
+        dst[len++] = c_ls[src % radix];
     } while ((src /= radix) > 0);
-
     reverse((unsigned long) len, dst);
-
     return len;
 }
 
@@ -34,7 +34,6 @@ int aofi(char *dst, int src, int radix) {
     } else {
         len = aofui(dst, (unsigned int) src, radix);
     }
-
     return len;
 }
 
@@ -42,11 +41,9 @@ int aoful(char *dst, unsigned long src, int radix) {
     int len = 0;
 
     do {
-        dst[len++] = (char) (src % radix + '0');
+        dst[len++] = c_ls[src % radix];
     } while ((src /= radix) > 0);
-
     reverse((unsigned long) len, dst);
-
     return len;
 }
 
@@ -59,6 +56,5 @@ int aofl(char *dst, long src, int radix) {
     } else {
         len = aoful(dst, (unsigned long) src, radix);
     }
-
     return len;
 }
